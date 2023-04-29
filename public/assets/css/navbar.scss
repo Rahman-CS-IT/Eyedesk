@@ -1,0 +1,1122 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+:root {
+	--accent-color: #1757c2;
+	--font-color-primary: #fff;
+	--font-color-secondary: #373737;
+}
+
+html {
+	font-size: 62.5%;
+	font-family: "Poppins", sans-serif;
+	input:focus,
+	textarea:focus,
+	select:focus {
+		outline: none;
+	}
+	a {
+		text-decoration: none;
+	}
+	li {
+		list-style-type: none;
+	}
+}
+
+html::-webkit-scrollbar {
+	display: none;
+}
+
+.navbar {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: 2px solid var(--accent-color);
+	width: 100%;
+	padding: 0.5rem 0rem;
+
+	.logo {
+		margin-left: 1.5rem;
+	}
+
+	.links ul {
+		margin-bottom: auto;
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		flex-direction: row;
+		margin-left: -10rem;
+		gap: 3rem;
+		background-color: #fff;
+
+		li {
+			list-style-type: none;
+
+			a {
+				text-decoration: none;
+				color: var(--font-color-secondary);
+				display: flex;
+				align-items: center;
+				font-size: 1.7rem;
+				font-weight: 600;
+
+				*img {
+					width: 30px;
+					height: 30px;
+					padding-right: 1rem;
+				}
+
+				p {
+					margin-left: 1rem;
+				}
+			}
+		}
+	}
+
+	.search-bar {
+		display: flex;
+		align-items: center;
+
+		.search-bar__button {
+			margin-bottom: auto;
+			height: 3.5rem;
+			text-align: center;
+			padding: 0.8rem 2rem;
+			font-family: "Poppins", sans-serif;
+			font-weight: 400;
+			font-size: 1.2rem;
+			color: var(--font-color-primary);
+			background-color: var(--accent-color);
+			cursor: pointer;
+			border: 1px solid rgba($color: #696969, $alpha: 0.5);
+			border-radius: 4px 0 0 4px;
+			user-select: none;
+		}
+
+		.search-bar__input {
+			font-family: "Poppins", sans-serif;
+			width: 60rem;
+			height: 3.5rem;
+			padding-left: 2rem;
+			z-index: 1;
+			border: 1px solid rgba($color: #696969, $alpha: 0.5);
+			border-radius: 0 4px 4px 0;
+		}
+
+		img {
+			margin-left: -3.5rem;
+			cursor: pointer;
+			pointer-events: none;
+			width: 20px;
+			z-index: 2;
+		}
+	}
+
+	.profile {
+		display: flex;
+		align-items: center;
+		gap: 3rem;
+		margin-right: 2rem;
+
+		.profile-state a {
+			display: flex;
+			align-items: center;
+			font-size: 1.5rem;
+			gap: 0.6rem;
+			cursor: pointer;
+			font-weight: 500;
+		}
+		.profile-hospital {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+			select {
+				border: none;
+				outline: none;
+				font-family: "Poppins", sans-serif;
+				font-weight: 500;
+				font-size: 1.6rem;
+			}
+		}
+		.profile-summary p {
+			font-size: 1.5rem;
+			font-weight: 500;
+			cursor: pointer;
+		}
+
+		.profile-image {
+			cursor: pointer;
+			.profile-image__dropdown {
+				position: absolute;
+				top: 9.5rem;
+				right: 2rem;
+				width: auto;
+				padding: 1rem 4rem;
+				border-radius: 1.2rem;
+				border: 1px solid rgba($color: #696966, $alpha: 0.2);
+				background-color: #fff;
+				box-sizing: 0 0.5rem 1.5rem rgba($color: #696969, $alpha: 0.5);
+				visibility: hidden;
+				opacity: 0;
+				transition-duration: 300ms;
+
+				li {
+					display: flex;
+					flex-direction: column;
+					align-items: center;
+					list-style-type: none;
+					padding: 0.5rem 0 0.5rem 0;
+
+					a {
+						text-decoration: none;
+						font-size: 1.4rem;
+						color: var(--font-color-secondary);
+					}
+				}
+
+				li:hover a {
+					color: var(--accent-color);
+				}
+			}
+
+			.profile-image__dropdown::before {
+				content: "";
+				position: absolute;
+				top: -0.9rem;
+				right: 1.6rem;
+				width: 1.5rem;
+				height: 1.5rem;
+				transform: rotate(45deg);
+				border-top: 1px solid rgba($color: #696969, $alpha: 0.2);
+				border-left: 1px solid rgba($color: #696969, $alpha: 0.2);
+				background-color: #fff;
+			}
+
+			.profile-image__dropdown.active {
+				top: 6.5rem;
+				visibility: visible;
+				opacity: 1;
+			}
+		}
+	}
+}
+
+.patient-registration {
+	display: none;
+	visibility: hidden;
+	top: 0;
+	left: 0;
+	position: absolute;
+	z-index: 300;
+	height: 100vh;
+	width: 100%;
+	background-color: rgba(168, 168, 168, 0.5);
+
+	.modal {
+		position: absolute;
+		top: 40%;
+		left: 50%;
+		width: 80vw;
+		height: auto;
+		background-color: #fff;
+		transform: translate(-50%, -40%);
+		border-radius: 1rem;
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+
+		.modal__header {
+			padding: 1.3rem 2rem;
+			display: flex;
+			width: 100%;
+			justify-content: flex-end;
+			gap: 35%;
+			align-items: center;
+
+			.modal__header__heading {
+				font-size: 1.75rem;
+				font-weight: 600;
+			}
+
+			.modal-closebtn {
+				cursor: pointer;
+			}
+		}
+
+		form {
+			width: 100%;
+			height: auto;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+
+			.modal__container {
+				width: 95%;
+				height: auto;
+				display: flex;
+				border: 1px solid rgba($color: #696969, $alpha: 0.2);
+				background-color: #f5f5f5;
+
+				.modal__container__left {
+					width: 55%;
+					border-right: 1px solid rgba($color: #696969, $alpha: 0.2);
+
+					.modal__container__left__header {
+						display: flex;
+						align-items: stretch;
+						border-bottom: 1px solid rgba($color: #696969, $alpha: 0.2);
+
+						.modal__container__left__nav__btn {
+							display: flex;
+							width: 25%;
+							height: 2rem;
+							padding: 2rem 2rem;
+							font-size: 1.3rem;
+							font-weight: 500;
+							align-items: center;
+							justify-content: center;
+							background-color: #fff;
+							cursor: pointer;
+						}
+						.modal__container__left__nav__btn.active {
+							background-color: var(--accent-color);
+							color: var(--font-color-primary);
+						}
+					}
+
+					.modal__container__left__body {
+						display: none;
+						margin: 1rem 2rem;
+
+						p {
+							margin-bottom: 0.6rem;
+							font-size: 1.3rem;
+							font-weight: 600;
+						}
+
+						input:not([type="radio"]) {
+							height: 2.85rem;
+							font-family: "Poppins", sans-serif;
+							font-size: 1.1rem;
+							margin-bottom: 2rem;
+							border-style: none;
+							padding: 1rem;
+							border-radius: 0.5rem;
+							box-shadow: rgba(149, 157, 165, 0.2) 0px 2px 8px;
+						}
+
+						input[type="file"] {
+							box-shadow: none;
+						}
+
+						input[type="radio"] {
+							transform: scale(1.3);
+							accent-color: var(--accent-color);
+						}
+
+						select {
+							height: 2.8rem;
+							font-family: "Poppins", sans-serif;
+							font-size: 1.05rem;
+							padding: 0.5rem;
+							margin-bottom: 2rem;
+							border-style: none;
+							border-radius: 0.5rem;
+							box-shadow: rgba(149, 157, 165, 0.2) 0px 2px 8px;
+						}
+
+						.patientdetails {
+							display: flex;
+							flex-direction: column;
+							height: 58vh;
+
+							.patientdetails__name,
+							.patientdetails__contact {
+								width: 100%;
+
+								.patientdatils__name_header,
+								.patientdatils__contact_header {
+									font-size: 1.3rem;
+									font-weight: 600;
+								}
+								.patientdetails__name_input,
+								.patientdetails__contact_input {
+									display: flex;
+									justify-content: space-between;
+									gap: 0 0.6rem;
+									width: 100%;
+									input {
+										width: 33%;
+									}
+								}
+							}
+
+							.patientdetails__4col {
+								display: flex;
+								justify-content: space-between;
+								width: 100%;
+
+								.patientdetails__4col_gender {
+									width: 15%;
+									.patientdatils__4col_gender_input {
+										display: flex;
+										justify-content: flex-start;
+										flex-direction: column;
+										.box {
+											display: flex;
+											margin-bottom: 1.6rem;
+											input[type="radio"] {
+												transform: scale(1.3);
+												accent-color: var(--accent-color);
+											}
+											p {
+												margin-left: 1rem;
+												margin-bottom: 0;
+												font-weight: 400;
+												font-size: 1.1rem;
+											}
+										}
+									}
+								}
+
+								.patientdetails__4col_dob {
+									width: 32%;
+									.patientdetails__4col_dob_input {
+										input {
+											width: 94%;
+										}
+										.box {
+											width: 94%;
+											display: flex;
+											flex-direction: row;
+											gap: 1rem;
+										}
+									}
+								}
+
+								.patientdetails__4col_language,
+								.patientdetails__4col_patienttype {
+									width: 23.5%;
+									.patientdatils__4col_language_input,
+									.patientdatils__4col_patienttype_input {
+										select {
+											width: 100%;
+										}
+									}
+								}
+							}
+
+							.patientdetails__2col {
+								display: flex;
+								width: 100%;
+								justify-content: space-between;
+
+								.patientdetails__2col_address {
+									width: 65%;
+									.patientdetails__2col_address__line1 {
+										display: flex;
+										gap: 1rem;
+										input {
+											width: 50%;
+											margin-bottom: 1rem;
+										}
+									}
+									.patientdetails__2col_address__line2 {
+										display: flex;
+										gap: 1rem;
+										select,
+										input {
+											width: 33.33%;
+										}
+									}
+								}
+
+								.patientdetails__2col__occupation {
+									width: 32%;
+									.patientdetails__2col__occupation__input {
+										select,
+										input {
+											width: 100%;
+											margin-bottom: 1rem;
+										}
+									}
+								}
+							}
+
+							.patientdetails__1col {
+								display: flex;
+								justify-content: stretch;
+								margin-bottom: 2rem;
+								.patientdetails__1col_medicalrecord {
+									width: 40%;
+									input {
+										width: 96%;
+									}
+								}
+
+								.patientdetails__1col_govtid {
+									width: 100%;
+									.patientdetails__1col_govtid_input {
+										display: flex;
+										gap: 0.6rem;
+										width: 100%;
+										select {
+											width: 100%;
+										}
+										input {
+											width: 100%;
+										}
+									}
+								}
+							}
+						}
+
+						.otherdetails {
+							display: flex;
+							flex-direction: column;
+							height: 58vh;
+
+							.otherdetails__groupone {
+								display: flex;
+								flex-direction: row;
+								margin-bottom: 2rem;
+
+								.otherdetails__groupone__bloodgroup {
+									.otherdetails__groupone__bloodgroup__input {
+										.box-container {
+											width: 100%;
+											display: flex;
+											flex-direction: row;
+											align-items: center;
+											margin-bottom: 1rem;
+											gap: 5rem;
+											.box {
+												display: flex;
+												justify-content: space-around;
+												align-items: center;
+												flex-direction: row;
+												p {
+													margin-bottom: 0;
+													margin-left: 1rem;
+												}
+											}
+										}
+									}
+								}
+							}
+
+							.otherdetails__grouptwo {
+								display: flex;
+								flex-direction: row;
+								justify-content: space-between;
+								width: 100%;
+								margin-bottom: 2rem;
+								.otherdetails__grouptwo__box {
+									width: 50%;
+									gap: 1rem;
+									.otherdetails__grouptwo__box____input {
+										display: flex;
+										flex-direction: row;
+										gap: 5rem;
+										.box {
+											display: flex;
+											justify-content: space-around;
+											align-items: center;
+											flex-direction: row;
+											p {
+												margin-bottom: 0;
+												margin-left: 1rem;
+												font-weight: 400;
+												font-size: 1.2rem;
+											}
+										}
+									}
+								}
+							}
+
+							.otherdetails__groupthree {
+								width: 100%;
+								.otherdetails__groupthree__input {
+									width: 100%;
+									display: flex;
+									gap: 1rem;
+									select {
+										width: 21%;
+									}
+									input {
+										width: 44%;
+									}
+								}
+							}
+						}
+
+						.history {
+							display: flex;
+							flex-direction: column;
+							overflow-y: scroll;
+							height: 58vh;
+
+							textarea {
+								resize: none;
+								font-family: "Poppins", sans-serif;
+								font-size: 1.1rem;
+								width: 100%;
+								padding: 0.8rem;
+								border: rgba($color: #696969, $alpha: 0.8);
+								border-radius: 0.5rem;
+							}
+
+							.selectbtn {
+								border: 1px solid rgba($color: #696969, $alpha: 0.2);
+								padding: 0.5rem 2rem;
+								font-size: 1.2rem;
+								font-family: "Poppins", sans-serif;
+								font-weight: 400;
+								margin: 0 -0.2rem;
+								background-color: #fff;
+								cursor: pointer;
+							}
+
+							.selectbtn.active {
+								background-color: var(--accent-color);
+								color: var(--font-color-primary);
+							}
+
+							.history-opthalmic,
+							.history-systemic {
+								margin-bottom: 2rem;
+								width: 100%;
+								.history-opthalmic__input__btn,
+								.history-systemic__input__btn {
+									margin-bottom: 1.3rem;
+									width: 100%;
+								}
+							}
+
+							.history-systemic {
+								.history-systemic__input__btn {
+									.history-systemic__input__btn-group {
+										width: 100%;
+									}
+								}
+							}
+
+							.history-medical-family {
+								display: flex;
+								width: 100%;
+								justify-content: space-between;
+								gap: 2rem;
+								.box {
+									width: 100%;
+									input {
+										width: 100%;
+									}
+								}
+							}
+
+							.history-paediatric {
+								.history-paediatric__body {
+									p {
+										font-weight: 400;
+										font-size: 1.1rem;
+										margin-bottom: 2rem;
+									}
+									.box {
+										display: flex;
+										align-items: center;
+										margin-bottom: 2rem;
+										gap: 8rem;
+
+										.box-body-nutrition {
+											margin-left: 2.8rem;
+										}
+
+										.box-body-txt {
+											margin-left: 8rem;
+										}
+									}
+								}
+							}
+						}
+
+						.history::-webkit-scrollbar,
+						.allergies::-webkit-scrollbar {
+							display: none;
+						}
+
+						.allergies {
+							display: flex;
+							flex-direction: column;
+							overflow-y: scroll;
+							height: 57vh;
+
+							textarea {
+								resize: none;
+								font-family: "Poppins", sans-serif;
+								font-size: 1.1rem;
+								width: 100%;
+								padding: 0.8rem;
+								border: rgba($color: #696969, $alpha: 0.8);
+								border-radius: 0.5rem;
+							}
+
+							.selectbtn {
+								border: 1px solid rgba($color: #696969, $alpha: 0.2);
+								padding: 0.5rem 2rem;
+								font-size: 1.2rem;
+								font-family: "Poppins", sans-serif;
+								font-weight: 400;
+								margin: 0 -0.2rem;
+								background-color: #fff;
+								cursor: pointer;
+							}
+
+							.selectbtn.active {
+								background-color: var(--accent-color);
+								color: var(--font-color-primary);
+							}
+
+							.allergies-drug,
+							.allergies-contact,
+							.allergies-food {
+								margin-bottom: 1.5rem;
+							}
+
+							.allergies-drug {
+								.allergies-drug__body {
+									.allergies-drug__body__btn {
+										margin-bottom: 1rem;
+									}
+								}
+							}
+
+							.allergies-food {
+								.allergies-food__body {
+									.allergies-food__body__btn {
+										margin-bottom: 1rem;
+									}
+								}
+							}
+
+							.allergies-contact {
+								.allergies-contact__body {
+									.allergies-contact__body__btn {
+										margin-bottom: 1rem;
+									}
+								}
+							}
+
+							.allergies-other {
+								display: flex;
+								gap: 4rem;
+								margin-bottom: 2rem;
+								textarea {
+									width: 60%;
+								}
+							}
+						}
+					}
+
+					.modal__container__left__body.active {
+						display: block;
+					}
+				}
+
+				.modal__container__right {
+					width: 45%;
+
+					.modal__container__right__header {
+						border-bottom: 1px solid rgba($color: #696969, $alpha: 0.2);
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						p {
+							font-size: 1.3rem;
+							font-weight: 500;
+							padding: 1rem 0;
+						}
+					}
+
+					.modal__container__right__body {
+						margin: 1rem 2rem;
+						p {
+							font-size: 1.3rem;
+							font-weight: 600;
+							margin-bottom: 1rem;
+						}
+
+						.appt-type {
+							.appt-type__input {
+								display: flex;
+								justify-content: flex-start;
+								align-items: center;
+								margin-bottom: 2rem;
+								gap: 0 6rem;
+								input[type="radio"] {
+									accent-color: var(--accent-color);
+									transform: scale(1.3);
+								}
+								p {
+									font-size: 1.2rem;
+									font-weight: 400;
+									margin-bottom: 0;
+									margin-left: -5.2rem;
+								}
+							}
+						}
+
+						.appt-datetime__input {
+							display: flex;
+							gap: 1rem;
+							input {
+								height: 2.85rem;
+								font-family: "Poppins", sans-serif;
+								font-size: 1.1rem;
+								padding: 1rem;
+								margin-bottom: 2rem;
+								border-style: none;
+								border-radius: 0.5rem;
+								box-shadow: rgba(149, 157, 165, 0.2) 0px 2px 8px;
+							}
+
+							.date {
+								width: 30%;
+							}
+							.time {
+								width: 20%;
+							}
+						}
+
+						.appt-location,
+						.appt-types {
+							display: flex;
+							justify-content: space-between;
+							select {
+								width: 30rem;
+								height: 2.8rem;
+								font-family: "Poppins", sans-serif;
+								font-size: 1.15rem;
+								padding: 0.5rem;
+								margin-bottom: 2rem;
+								border-style: none;
+								border-radius: 0.5rem;
+								box-shadow: rgba(149, 157, 165, 0.2) 0px 2px 8px;
+
+								option {
+									height: inherit;
+								}
+							}
+							p {
+								margin-bottom: 0.6rem;
+							}
+						}
+
+						.reservation {
+							margin-top: 1rem;
+							font-size: 1.3rem;
+							.reservation_time{
+								color:rgba(23, 87, 194, 1)
+							}
+						}
+
+						.reservation-container {
+							user-select: none;
+							display: block;
+							width: auto;
+							height: auto;
+							border: 1px solid rgba($color: #696969, $alpha: 0.2);
+							background-color: #fff;
+							margin-bottom: 2rem;
+							border-radius: 0.5rem;
+							table{
+								text-align: center;
+								font-size: 12px;
+								font-weight: 500;
+								table-layout: fixed;
+								line-height: 18px;
+								margin:auto;
+								border-radius: 5px;
+								width: 100%;
+							}
+							td,th{
+								height: 20px;
+								width: 33px;
+							}
+							th{
+								height: 25px;
+							}
+							td{
+								height: 60px;
+							}
+							table,td,tr,th{
+								border: 1px solid rgba(217, 217, 217, 1);
+								border-collapse: collapse;
+								
+							}
+							.r{
+								
+								color: rgba(255, 255, 255, 1);
+								background-color: rgba(136, 180, 255, 1);
+							}
+							.r:hover{
+								border: 1px solid rgba(136, 180, 255, 1);
+							}
+						}
+					}
+				}
+			}
+
+			.modal__createappointmentbtn {
+				display: flex;
+				width: 100%;
+				padding: 2rem 3.3rem;
+				justify-content: flex-end;
+
+				button {
+					font-family: "Poppins", sans-serif;
+					font-size: 1.3rem;
+					font-weight: 600;
+					padding: 1rem 2rem;
+					border-radius: 0.4rem;
+					border-style: none;
+					background-color: var(--accent-color);
+					color: var(--font-color-primary);
+					cursor: pointer;
+				}
+			}
+		}
+	}
+}
+
+.patient-registration.active {
+	display: block;
+	visibility: visible;
+}
+
+#dynamic{
+	ul{
+		display: flex;
+		flex-direction: row;
+		// justify-content: space-between;
+		font-weight: 600;
+		font-size: 1.3rem;
+		margin-block-end: 1rem;
+		// margin-right: 10rem;
+		// :nth-child(2){
+		// 	width: 20%;
+		// }
+		:nth-child(1){
+			width: 20%;
+		}
+		li{
+			width: 25%;
+		}
+		
+	}
+	div{
+
+		.dynamic-inputs{
+				:nth-child(1){
+					width: 20%;
+				}
+				display: flex;
+				flex-direction: row;
+				input,label,select{
+					width: 23.3%;
+				}
+				select{
+					margin-right: 1rem;
+				}
+				label{
+					font-size: 1.3rem;
+					font-weight: 600;
+				}
+				:last-child{
+					width: auto;
+				}
+		}
+	}
+}
+#dynamic-systemic{
+	ul{
+		display: flex;
+		flex-direction: row;
+		// justify-content: space-between;
+		font-weight: 600;
+		font-size: 1.3rem;
+		margin-block-end: 1rem;
+		// margin-right: 10rem;
+		// :nth-child(2){
+		// 	width: 20%;
+		// }
+		:nth-child(1){
+			width: 20%;
+		}
+		li{
+			width: 25%;
+		}
+		
+	}
+	div{
+
+		.dynamic-inputs{
+				:nth-child(1){
+					width: 20%;
+				}
+				display: flex;
+				flex-direction: row;
+				input,label,select{
+					width: 23.3%;
+				}
+				select{
+					margin-right: 1rem;
+				}
+				label{
+					font-size: 1.3rem;
+					font-weight: 600;
+				}
+				:last-child{
+					width: auto;
+				}
+		}
+	}
+}
+#food-allergies{
+	ul{
+		display: flex;
+		flex-direction: row;
+		// justify-content: space-between;
+		font-weight: 600;
+		font-size: 1.3rem;
+		margin-block-end: 1rem;
+		// margin-right: 10rem;
+		// :nth-child(2){
+		// 	width: 20%;
+		// }
+		:nth-child(1){
+			width: 20%;
+		}
+		li{
+			width: 25%;
+		}
+		
+	}
+	div{
+
+		.dynamic-inputs{
+				:nth-child(1){
+					width: 20%;
+				}
+				display: flex;
+				flex-direction: row;
+				input,label,select{
+					width: 23.3%;
+				}
+				select{
+					margin-right: 1rem;
+				}
+				label{
+					font-size: 1.3rem;
+					font-weight: 600;
+				}
+				:last-child{
+					width: auto;
+				}
+		}
+	}
+}
+#allergies{
+	ul{
+		display: flex;
+		flex-direction: row;
+		// justify-content: space-between;
+		font-weight: 600;
+		font-size: 1.3rem;
+		margin-block-end: 1rem;
+		// margin-right: 10rem;
+		// :nth-child(2){
+		// 	width: 20%;
+		// }
+		:nth-child(1){
+			width: 20%;
+		}
+		li{
+			width: 25%;
+		}
+		
+	}
+	div{
+
+		.dynamic-inputs{
+				:nth-child(1){
+					width: 20%;
+				}
+				display: flex;
+				flex-direction: row;
+				input,label,select{
+					width: 23.3%;
+				}
+				select{
+					margin-right: 1rem;
+				}
+				label{
+					font-size: 1.3rem;
+					font-weight: 600;
+				}
+				:last-child{
+					width: auto;
+				}
+		}
+	}
+}
+#contact-allergies{
+	ul{
+		display: flex;
+		flex-direction: row;
+		// justify-content: space-between;
+		font-weight: 600;
+		font-size: 1.3rem;
+		margin-block-end: 1rem;
+		// margin-right: 10rem;
+		// :nth-child(2){
+		// 	width: 20%;
+		// }
+		:nth-child(1){
+			width: 20%;
+		}
+		li{
+			width: 25%;
+		}
+		
+	}
+	div{
+
+		.dynamic-inputs{
+				:nth-child(1){
+					width: 20%;
+				}
+				display: flex;
+				flex-direction: row;
+				input,label,select{
+					width: 23.3%;
+				}
+				select{
+					margin-right: 1rem;
+				}
+				label{
+					font-size: 1.3rem;
+					font-weight: 600;
+				}
+				:last-child{
+					width: auto;
+				}
+		}
+	}
+}

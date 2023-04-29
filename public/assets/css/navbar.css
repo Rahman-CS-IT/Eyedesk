@@ -1,0 +1,976 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --accent-color: #1757c2;
+  --font-color-primary: #fff;
+  --font-color-secondary: #373737;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: "Poppins", sans-serif;
+}
+html input:focus,
+html textarea:focus,
+html select:focus {
+  outline: none;
+}
+html a {
+  text-decoration: none;
+}
+html li {
+  list-style-type: none;
+}
+
+html::-webkit-scrollbar {
+  display: none;
+}
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid var(--accent-color);
+  width: 100%;
+  padding: 0.5rem 0rem;
+}
+.navbar .logo {
+  margin-left: 1.5rem;
+}
+.navbar .links ul {
+  margin-bottom: auto;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin-left: -10rem;
+  gap: 3rem;
+  background-color: #fff;
+}
+.navbar .links ul li {
+  list-style-type: none;
+}
+.navbar .links ul li a {
+  text-decoration: none;
+  color: var(--font-color-secondary);
+  display: flex;
+  align-items: center;
+  font-size: 1.7rem;
+  font-weight: 600;
+}
+.navbar .links ul li a * img {
+  width: 30px;
+  height: 30px;
+  padding-right: 1rem;
+}
+.navbar .links ul li a p {
+  margin-left: 1rem;
+}
+.navbar .search-bar {
+  display: flex;
+  align-items: center;
+}
+.navbar .search-bar .search-bar__button {
+  margin-bottom: auto;
+  height: 3.5rem;
+  text-align: center;
+  padding: 0.8rem 2rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 1.2rem;
+  color: var(--font-color-primary);
+  background-color: var(--accent-color);
+  cursor: pointer;
+  border: 1px solid rgba(105, 105, 105, 0.5);
+  border-radius: 4px 0 0 4px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.navbar .search-bar .search-bar__input {
+  font-family: "Poppins", sans-serif;
+  width: 60rem;
+  height: 3.5rem;
+  padding-left: 2rem;
+  z-index: 1;
+  border: 1px solid rgba(105, 105, 105, 0.5);
+  border-radius: 0 4px 4px 0;
+}
+.navbar .search-bar img {
+  margin-left: -3.5rem;
+  cursor: pointer;
+  pointer-events: none;
+  width: 20px;
+  z-index: 2;
+}
+.navbar .profile {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  margin-right: 2rem;
+}
+.navbar .profile .profile-state a {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  gap: 0.6rem;
+  cursor: pointer;
+  font-weight: 500;
+}
+.navbar .profile .profile-hospital {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.navbar .profile .profile-hospital select {
+  border: none;
+  outline: none;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 1.6rem;
+}
+.navbar .profile .profile-summary p {
+  font-size: 1.5rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+.navbar .profile .profile-image {
+  cursor: pointer;
+}
+.navbar .profile .profile-image .profile-image__dropdown {
+  position: absolute;
+  top: 9.5rem;
+  right: 2rem;
+  width: auto;
+  padding: 1rem 4rem;
+  border-radius: 1.2rem;
+  border: 1px solid rgba(105, 105, 102, 0.2);
+  background-color: #fff;
+  box-sizing: 0 0.5rem 1.5rem rgba(105, 105, 105, 0.5);
+  visibility: hidden;
+  opacity: 0;
+  transition-duration: 300ms;
+}
+.navbar .profile .profile-image .profile-image__dropdown li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  list-style-type: none;
+  padding: 0.5rem 0 0.5rem 0;
+}
+.navbar .profile .profile-image .profile-image__dropdown li a {
+  text-decoration: none;
+  font-size: 1.4rem;
+  color: var(--font-color-secondary);
+}
+.navbar .profile .profile-image .profile-image__dropdown li:hover a {
+  color: var(--accent-color);
+}
+.navbar .profile .profile-image .profile-image__dropdown::before {
+  content: "";
+  position: absolute;
+  top: -0.9rem;
+  right: 1.6rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  transform: rotate(45deg);
+  border-top: 1px solid rgba(105, 105, 105, 0.2);
+  border-left: 1px solid rgba(105, 105, 105, 0.2);
+  background-color: #fff;
+}
+.navbar .profile .profile-image .profile-image__dropdown.active {
+  top: 6.5rem;
+  visibility: visible;
+  opacity: 1;
+}
+
+.patient-registration {
+  display: none;
+  visibility: hidden;
+  top: 0;
+  left: 0;
+  position: absolute;
+  z-index: 300;
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(168, 168, 168, 0.5);
+}
+.patient-registration .modal {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  width: 80vw;
+  height: auto;
+  background-color: #fff;
+  transform: translate(-50%, -40%);
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.patient-registration .modal .modal__header {
+  padding: 1.3rem 2rem;
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  gap: 35%;
+  align-items: center;
+}
+.patient-registration .modal .modal__header .modal__header__heading {
+  font-size: 1.75rem;
+  font-weight: 600;
+}
+.patient-registration .modal .modal__header .modal-closebtn {
+  cursor: pointer;
+}
+.patient-registration .modal form {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.patient-registration .modal form .modal__container {
+  width: 95%;
+  height: auto;
+  display: flex;
+  border: 1px solid rgba(105, 105, 105, 0.2);
+  background-color: #f5f5f5;
+}
+.patient-registration .modal form .modal__container .modal__container__left {
+  width: 55%;
+  border-right: 1px solid rgba(105, 105, 105, 0.2);
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__header {
+  display: flex;
+  align-items: stretch;
+  border-bottom: 1px solid rgba(105, 105, 105, 0.2);
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__header .modal__container__left__nav__btn {
+  display: flex;
+  width: 25%;
+  height: 2rem;
+  padding: 2rem 2rem;
+  font-size: 1.3rem;
+  font-weight: 500;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  cursor: pointer;
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__header .modal__container__left__nav__btn.active {
+  background-color: var(--accent-color);
+  color: var(--font-color-primary);
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body {
+  display: none;
+  margin: 1rem 2rem;
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body p {
+  margin-bottom: 0.6rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body input:not([type=radio]) {
+  height: 2.85rem;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  border-style: none;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 2px 8px;
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body input[type=file] {
+  box-shadow: none;
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body input[type=radio] {
+  transform: scale(1.3);
+  accent-color: var(--accent-color);
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body select {
+  height: 2.8rem;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.05rem;
+  padding: 0.5rem;
+  margin-bottom: 2rem;
+  border-style: none;
+  border-radius: 0.5rem;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 2px 8px;
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .patientdetails {
+  display: flex;
+  flex-direction: column;
+  height: 58vh;
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .patientdetails .patientdetails__name,
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .patientdetails .patientdetails__contact {
+  width: 100%;
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .patientdetails .patientdetails__name .patientdatils__name_header,
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .patientdetails .patientdetails__name .patientdatils__contact_header,
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .patientdetails .patientdetails__contact .patientdatils__name_header,
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .patientdetails .patientdetails__contact .patientdatils__contact_header {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .patientdetails .patientdetails__name .patientdetails__name_input,
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .patientdetails .patientdetails__name .patientdetails__contact_input,
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .patientdetails .patientdetails__contact .patientdetails__name_input,
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .patientdetails .patientdetails__contact .patientdetails__contact_input {
+  display: flex;
+  justify-content: space-between;
+  gap: 0 0.6rem;
+  width: 100%;
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .patientdetails .patientdetails__name .patientdetails__name_input input,
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .patientdetails .patientdetails__name .patientdetails__contact_input input,
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .patientdetails .patientdetails__contact .patientdetails__name_input input,
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .patientdetails .patientdetails__contact .patientdetails__contact_input input {
+  width: 33%;
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .patientdetails .patientdetails__4col {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .patientdetails .patientdetails__4col .patientdetails__4col_gender {
+  width: 15%;
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .patientdetails .patientdetails__4col .patientdetails__4col_gender .patientdatils__4col_gender_input {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .patientdetails .patientdetails__4col .patientdetails__4col_gender .patientdatils__4col_gender_input .box {
+  display: flex;
+  margin-bottom: 1.6rem;
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .patientdetails .patientdetails__4col .patientdetails__4col_gender .patientdatils__4col_gender_input .box input[type=radio] {
+  transform: scale(1.3);
+  accent-color: var(--accent-color);
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .patientdetails .patientdetails__4col .patientdetails__4col_gender .patientdatils__4col_gender_input .box p {
+  margin-left: 1rem;
+  margin-bottom: 0;
+  font-weight: 400;
+  font-size: 1.1rem;
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .patientdetails .patientdetails__4col .patientdetails__4col_dob {
+  width: 32%;
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .patientdetails .patientdetails__4col .patientdetails__4col_dob .patientdetails__4col_dob_input input {
+  width: 94%;
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .patientdetails .patientdetails__4col .patientdetails__4col_dob .patientdetails__4col_dob_input .box {
+  width: 94%;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .patientdetails .patientdetails__4col .patientdetails__4col_language,
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .patientdetails .patientdetails__4col .patientdetails__4col_patienttype {
+  width: 23.5%;
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .patientdetails .patientdetails__4col .patientdetails__4col_language .patientdatils__4col_language_input select,
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .patientdetails .patientdetails__4col .patientdetails__4col_language .patientdatils__4col_patienttype_input select,
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .patientdetails .patientdetails__4col .patientdetails__4col_patienttype .patientdatils__4col_language_input select,
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .patientdetails .patientdetails__4col .patientdetails__4col_patienttype .patientdatils__4col_patienttype_input select {
+  width: 100%;
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .patientdetails .patientdetails__2col {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .patientdetails .patientdetails__2col .patientdetails__2col_address {
+  width: 65%;
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .patientdetails .patientdetails__2col .patientdetails__2col_address .patientdetails__2col_address__line1 {
+  display: flex;
+  gap: 1rem;
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .patientdetails .patientdetails__2col .patientdetails__2col_address .patientdetails__2col_address__line1 input {
+  width: 50%;
+  margin-bottom: 1rem;
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .patientdetails .patientdetails__2col .patientdetails__2col_address .patientdetails__2col_address__line2 {
+  display: flex;
+  gap: 1rem;
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .patientdetails .patientdetails__2col .patientdetails__2col_address .patientdetails__2col_address__line2 select,
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .patientdetails .patientdetails__2col .patientdetails__2col_address .patientdetails__2col_address__line2 input {
+  width: 33.33%;
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .patientdetails .patientdetails__2col .patientdetails__2col__occupation {
+  width: 32%;
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .patientdetails .patientdetails__2col .patientdetails__2col__occupation .patientdetails__2col__occupation__input select,
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .patientdetails .patientdetails__2col .patientdetails__2col__occupation .patientdetails__2col__occupation__input input {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .patientdetails .patientdetails__1col {
+  display: flex;
+  justify-content: stretch;
+  margin-bottom: 2rem;
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .patientdetails .patientdetails__1col .patientdetails__1col_medicalrecord {
+  width: 40%;
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .patientdetails .patientdetails__1col .patientdetails__1col_medicalrecord input {
+  width: 96%;
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .patientdetails .patientdetails__1col .patientdetails__1col_govtid {
+  width: 100%;
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .patientdetails .patientdetails__1col .patientdetails__1col_govtid .patientdetails__1col_govtid_input {
+  display: flex;
+  gap: 0.6rem;
+  width: 100%;
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .patientdetails .patientdetails__1col .patientdetails__1col_govtid .patientdetails__1col_govtid_input select {
+  width: 100%;
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .patientdetails .patientdetails__1col .patientdetails__1col_govtid .patientdetails__1col_govtid_input input {
+  width: 100%;
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .otherdetails {
+  display: flex;
+  flex-direction: column;
+  height: 58vh;
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .otherdetails .otherdetails__groupone {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 2rem;
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .otherdetails .otherdetails__groupone .otherdetails__groupone__bloodgroup .otherdetails__groupone__bloodgroup__input .box-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 1rem;
+  gap: 5rem;
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .otherdetails .otherdetails__groupone .otherdetails__groupone__bloodgroup .otherdetails__groupone__bloodgroup__input .box-container .box {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .otherdetails .otherdetails__groupone .otherdetails__groupone__bloodgroup .otherdetails__groupone__bloodgroup__input .box-container .box p {
+  margin-bottom: 0;
+  margin-left: 1rem;
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .otherdetails .otherdetails__grouptwo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .otherdetails .otherdetails__grouptwo .otherdetails__grouptwo__box {
+  width: 50%;
+  gap: 1rem;
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .otherdetails .otherdetails__grouptwo .otherdetails__grouptwo__box .otherdetails__grouptwo__box____input {
+  display: flex;
+  flex-direction: row;
+  gap: 5rem;
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .otherdetails .otherdetails__grouptwo .otherdetails__grouptwo__box .otherdetails__grouptwo__box____input .box {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .otherdetails .otherdetails__grouptwo .otherdetails__grouptwo__box .otherdetails__grouptwo__box____input .box p {
+  margin-bottom: 0;
+  margin-left: 1rem;
+  font-weight: 400;
+  font-size: 1.2rem;
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .otherdetails .otherdetails__groupthree {
+  width: 100%;
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .otherdetails .otherdetails__groupthree .otherdetails__groupthree__input {
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .otherdetails .otherdetails__groupthree .otherdetails__groupthree__input select {
+  width: 21%;
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .otherdetails .otherdetails__groupthree .otherdetails__groupthree__input input {
+  width: 44%;
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .history {
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  height: 58vh;
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .history textarea {
+  resize: none;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.1rem;
+  width: 100%;
+  padding: 0.8rem;
+  border: rgba(105, 105, 105, 0.8);
+  border-radius: 0.5rem;
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .history .selectbtn {
+  border: 1px solid rgba(105, 105, 105, 0.2);
+  padding: 0.5rem 2rem;
+  font-size: 1.2rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  margin: 0 -0.2rem;
+  background-color: #fff;
+  cursor: pointer;
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .history .selectbtn.active {
+  background-color: var(--accent-color);
+  color: var(--font-color-primary);
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .history .history-opthalmic,
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .history .history-systemic {
+  margin-bottom: 2rem;
+  width: 100%;
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .history .history-opthalmic .history-opthalmic__input__btn,
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .history .history-opthalmic .history-systemic__input__btn,
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .history .history-systemic .history-opthalmic__input__btn,
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .history .history-systemic .history-systemic__input__btn {
+  margin-bottom: 1.3rem;
+  width: 100%;
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .history .history-systemic .history-systemic__input__btn .history-systemic__input__btn-group {
+  width: 100%;
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .history .history-medical-family {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  gap: 2rem;
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .history .history-medical-family .box {
+  width: 100%;
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .history .history-medical-family .box input {
+  width: 100%;
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .history .history-paediatric .history-paediatric__body p {
+  font-weight: 400;
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .history .history-paediatric .history-paediatric__body .box {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+  gap: 8rem;
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .history .history-paediatric .history-paediatric__body .box .box-body-nutrition {
+  margin-left: 2.8rem;
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .history .history-paediatric .history-paediatric__body .box .box-body-txt {
+  margin-left: 8rem;
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .history::-webkit-scrollbar,
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .allergies::-webkit-scrollbar {
+  display: none;
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .allergies {
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  height: 57vh;
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .allergies textarea {
+  resize: none;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.1rem;
+  width: 100%;
+  padding: 0.8rem;
+  border: rgba(105, 105, 105, 0.8);
+  border-radius: 0.5rem;
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .allergies .selectbtn {
+  border: 1px solid rgba(105, 105, 105, 0.2);
+  padding: 0.5rem 2rem;
+  font-size: 1.2rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  margin: 0 -0.2rem;
+  background-color: #fff;
+  cursor: pointer;
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .allergies .selectbtn.active {
+  background-color: var(--accent-color);
+  color: var(--font-color-primary);
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .allergies .allergies-drug,
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .allergies .allergies-contact,
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .allergies .allergies-food {
+  margin-bottom: 1.5rem;
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .allergies .allergies-drug .allergies-drug__body .allergies-drug__body__btn {
+  margin-bottom: 1rem;
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .allergies .allergies-food .allergies-food__body .allergies-food__body__btn {
+  margin-bottom: 1rem;
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .allergies .allergies-contact .allergies-contact__body .allergies-contact__body__btn {
+  margin-bottom: 1rem;
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .allergies .allergies-other {
+  display: flex;
+  gap: 4rem;
+  margin-bottom: 2rem;
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body .allergies .allergies-other textarea {
+  width: 60%;
+}
+.patient-registration .modal form .modal__container .modal__container__left .modal__container__left__body.active {
+  display: block;
+}
+.patient-registration .modal form .modal__container .modal__container__right {
+  width: 45%;
+}
+.patient-registration .modal form .modal__container .modal__container__right .modal__container__right__header {
+  border-bottom: 1px solid rgba(105, 105, 105, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.patient-registration .modal form .modal__container .modal__container__right .modal__container__right__header p {
+  font-size: 1.3rem;
+  font-weight: 500;
+  padding: 1rem 0;
+}
+.patient-registration .modal form .modal__container .modal__container__right .modal__container__right__body {
+  margin: 1rem 2rem;
+}
+.patient-registration .modal form .modal__container .modal__container__right .modal__container__right__body p {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+.patient-registration .modal form .modal__container .modal__container__right .modal__container__right__body .appt-type .appt-type__input {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 2rem;
+  gap: 0 6rem;
+}
+.patient-registration .modal form .modal__container .modal__container__right .modal__container__right__body .appt-type .appt-type__input input[type=radio] {
+  accent-color: var(--accent-color);
+  transform: scale(1.3);
+}
+.patient-registration .modal form .modal__container .modal__container__right .modal__container__right__body .appt-type .appt-type__input p {
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin-bottom: 0;
+  margin-left: -5.2rem;
+}
+.patient-registration .modal form .modal__container .modal__container__right .modal__container__right__body .appt-datetime__input {
+  display: flex;
+  gap: 1rem;
+}
+.patient-registration .modal form .modal__container .modal__container__right .modal__container__right__body .appt-datetime__input input {
+  height: 2.85rem;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.1rem;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  border-style: none;
+  border-radius: 0.5rem;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 2px 8px;
+}
+.patient-registration .modal form .modal__container .modal__container__right .modal__container__right__body .appt-datetime__input .date {
+  width: 30%;
+}
+.patient-registration .modal form .modal__container .modal__container__right .modal__container__right__body .appt-datetime__input .time {
+  width: 20%;
+}
+.patient-registration .modal form .modal__container .modal__container__right .modal__container__right__body .appt-location,
+.patient-registration .modal form .modal__container .modal__container__right .modal__container__right__body .appt-types {
+  display: flex;
+  justify-content: space-between;
+}
+.patient-registration .modal form .modal__container .modal__container__right .modal__container__right__body .appt-location select,
+.patient-registration .modal form .modal__container .modal__container__right .modal__container__right__body .appt-types select {
+  width: 30rem;
+  height: 2.8rem;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.15rem;
+  padding: 0.5rem;
+  margin-bottom: 2rem;
+  border-style: none;
+  border-radius: 0.5rem;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 2px 8px;
+}
+.patient-registration .modal form .modal__container .modal__container__right .modal__container__right__body .appt-location select option,
+.patient-registration .modal form .modal__container .modal__container__right .modal__container__right__body .appt-types select option {
+  height: inherit;
+}
+.patient-registration .modal form .modal__container .modal__container__right .modal__container__right__body .appt-location p,
+.patient-registration .modal form .modal__container .modal__container__right .modal__container__right__body .appt-types p {
+  margin-bottom: 0.6rem;
+}
+.patient-registration .modal form .modal__container .modal__container__right .modal__container__right__body .reservation {
+  margin-top: 1rem;
+  font-size: 1.3rem;
+}
+.patient-registration .modal form .modal__container .modal__container__right .modal__container__right__body .reservation .reservation_time {
+  color: rgb(23, 87, 194);
+}
+.patient-registration .modal form .modal__container .modal__container__right .modal__container__right__body .reservation-container {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  display: block;
+  width: auto;
+  height: auto;
+  border: 1px solid rgba(105, 105, 105, 0.2);
+  background-color: #fff;
+  margin-bottom: 2rem;
+  border-radius: 0.5rem;
+}
+.patient-registration .modal form .modal__container .modal__container__right .modal__container__right__body .reservation-container table {
+  text-align: center;
+  font-size: 12px;
+  font-weight: 500;
+  table-layout: fixed;
+  line-height: 18px;
+  margin: auto;
+  border-radius: 5px;
+  width: 100%;
+}
+.patient-registration .modal form .modal__container .modal__container__right .modal__container__right__body .reservation-container td, .patient-registration .modal form .modal__container .modal__container__right .modal__container__right__body .reservation-container th {
+  height: 20px;
+  width: 33px;
+}
+.patient-registration .modal form .modal__container .modal__container__right .modal__container__right__body .reservation-container th {
+  height: 25px;
+}
+.patient-registration .modal form .modal__container .modal__container__right .modal__container__right__body .reservation-container td {
+  height: 60px;
+}
+.patient-registration .modal form .modal__container .modal__container__right .modal__container__right__body .reservation-container table, .patient-registration .modal form .modal__container .modal__container__right .modal__container__right__body .reservation-container td, .patient-registration .modal form .modal__container .modal__container__right .modal__container__right__body .reservation-container tr, .patient-registration .modal form .modal__container .modal__container__right .modal__container__right__body .reservation-container th {
+  border: 1px solid rgb(217, 217, 217);
+  border-collapse: collapse;
+}
+.patient-registration .modal form .modal__container .modal__container__right .modal__container__right__body .reservation-container .r {
+  color: rgb(255, 255, 255);
+  background-color: rgb(136, 180, 255);
+}
+.patient-registration .modal form .modal__container .modal__container__right .modal__container__right__body .reservation-container .r:hover {
+  border: 1px solid rgb(136, 180, 255);
+}
+.patient-registration .modal form .modal__createappointmentbtn {
+  display: flex;
+  width: 100%;
+  padding: 2rem 3.3rem;
+  justify-content: flex-end;
+}
+.patient-registration .modal form .modal__createappointmentbtn button {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  padding: 1rem 2rem;
+  border-radius: 0.4rem;
+  border-style: none;
+  background-color: var(--accent-color);
+  color: var(--font-color-primary);
+  cursor: pointer;
+}
+
+.patient-registration.active {
+  display: block;
+  visibility: visible;
+}
+
+#dynamic ul {
+  display: flex;
+  flex-direction: row;
+  font-weight: 600;
+  font-size: 1.3rem;
+  -webkit-margin-after: 1rem;
+          margin-block-end: 1rem;
+}
+#dynamic ul :nth-child(1) {
+  width: 20%;
+}
+#dynamic ul li {
+  width: 25%;
+}
+#dynamic div .dynamic-inputs {
+  display: flex;
+  flex-direction: row;
+}
+#dynamic div .dynamic-inputs :nth-child(1) {
+  width: 20%;
+}
+#dynamic div .dynamic-inputs input, #dynamic div .dynamic-inputs label, #dynamic div .dynamic-inputs select {
+  width: 23.3%;
+}
+#dynamic div .dynamic-inputs select {
+  margin-right: 1rem;
+}
+#dynamic div .dynamic-inputs label {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+#dynamic div .dynamic-inputs :last-child {
+  width: auto;
+}
+
+#dynamic-systemic ul {
+  display: flex;
+  flex-direction: row;
+  font-weight: 600;
+  font-size: 1.3rem;
+  -webkit-margin-after: 1rem;
+          margin-block-end: 1rem;
+}
+#dynamic-systemic ul :nth-child(1) {
+  width: 20%;
+}
+#dynamic-systemic ul li {
+  width: 25%;
+}
+#dynamic-systemic div .dynamic-inputs {
+  display: flex;
+  flex-direction: row;
+}
+#dynamic-systemic div .dynamic-inputs :nth-child(1) {
+  width: 20%;
+}
+#dynamic-systemic div .dynamic-inputs input, #dynamic-systemic div .dynamic-inputs label, #dynamic-systemic div .dynamic-inputs select {
+  width: 23.3%;
+}
+#dynamic-systemic div .dynamic-inputs select {
+  margin-right: 1rem;
+}
+#dynamic-systemic div .dynamic-inputs label {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+#dynamic-systemic div .dynamic-inputs :last-child {
+  width: auto;
+}
+
+#food-allergies ul {
+  display: flex;
+  flex-direction: row;
+  font-weight: 600;
+  font-size: 1.3rem;
+  -webkit-margin-after: 1rem;
+          margin-block-end: 1rem;
+}
+#food-allergies ul :nth-child(1) {
+  width: 20%;
+}
+#food-allergies ul li {
+  width: 25%;
+}
+#food-allergies div .dynamic-inputs {
+  display: flex;
+  flex-direction: row;
+}
+#food-allergies div .dynamic-inputs :nth-child(1) {
+  width: 20%;
+}
+#food-allergies div .dynamic-inputs input, #food-allergies div .dynamic-inputs label, #food-allergies div .dynamic-inputs select {
+  width: 23.3%;
+}
+#food-allergies div .dynamic-inputs select {
+  margin-right: 1rem;
+}
+#food-allergies div .dynamic-inputs label {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+#food-allergies div .dynamic-inputs :last-child {
+  width: auto;
+}
+
+#allergies ul {
+  display: flex;
+  flex-direction: row;
+  font-weight: 600;
+  font-size: 1.3rem;
+  -webkit-margin-after: 1rem;
+          margin-block-end: 1rem;
+}
+#allergies ul :nth-child(1) {
+  width: 20%;
+}
+#allergies ul li {
+  width: 25%;
+}
+#allergies div .dynamic-inputs {
+  display: flex;
+  flex-direction: row;
+}
+#allergies div .dynamic-inputs :nth-child(1) {
+  width: 20%;
+}
+#allergies div .dynamic-inputs input, #allergies div .dynamic-inputs label, #allergies div .dynamic-inputs select {
+  width: 23.3%;
+}
+#allergies div .dynamic-inputs select {
+  margin-right: 1rem;
+}
+#allergies div .dynamic-inputs label {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+#allergies div .dynamic-inputs :last-child {
+  width: auto;
+}
+
+#contact-allergies ul {
+  display: flex;
+  flex-direction: row;
+  font-weight: 600;
+  font-size: 1.3rem;
+  -webkit-margin-after: 1rem;
+          margin-block-end: 1rem;
+}
+#contact-allergies ul :nth-child(1) {
+  width: 20%;
+}
+#contact-allergies ul li {
+  width: 25%;
+}
+#contact-allergies div .dynamic-inputs {
+  display: flex;
+  flex-direction: row;
+}
+#contact-allergies div .dynamic-inputs :nth-child(1) {
+  width: 20%;
+}
+#contact-allergies div .dynamic-inputs input, #contact-allergies div .dynamic-inputs label, #contact-allergies div .dynamic-inputs select {
+  width: 23.3%;
+}
+#contact-allergies div .dynamic-inputs select {
+  margin-right: 1rem;
+}
+#contact-allergies div .dynamic-inputs label {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+#contact-allergies div .dynamic-inputs :last-child {
+  width: auto;
+}/*# sourceMappingURL=navbar.css.map */

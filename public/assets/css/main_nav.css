@@ -1,0 +1,248 @@
+* {
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+
+.main_nav {
+    height: 55px;
+    width: 100%;
+}
+
+.main_nav .left {
+    float: left;
+    width: 30%;
+
+}
+
+.main_nav .mid {
+    width: 45%;
+    float: left;
+
+}
+
+.main_nav .right {
+    width: 30%;
+    float: right;
+}
+
+.main_nav .left button {
+    float: left;
+    width: 10%;
+    padding: 6px 0px 0px 10px;
+    border: none;
+    background: none;
+}
+
+.main_nav .left button img {
+    height: 45px;
+    width: 45px;
+}
+
+.main_nav .left ul {
+    width: 80%;
+    display: flex;
+    float: right;
+    margin-top: 18px;
+    font-size: 12px;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.main_nav .left li {
+    width: 25%;
+    list-style: none;
+    display: inline;
+    justify-content: space-around;
+}
+
+.main_nav .left li a {
+    color: black;
+    text-decoration: none;
+}
+
+.main_nav .store select {
+    font-weight: 950;
+    border: none;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    font-size: 15px;
+    height: 30px;
+    text-align: center;
+    appearance: none;
+    width: 90%;
+}
+
+.main_nav .store:after {
+    content: "";
+    position: absolute;
+    top: 14px;
+    height: 1px;
+    right: -10%;
+    border-top: 5px solid #080505;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+}
+
+.main_nav .store-logo {
+    width: 25%;
+    position: relative;
+}
+
+.main_nav .logo {
+    width: 26%;
+    float: left;
+}
+
+.main_nav .store {
+    width: 65px;
+    position: relative;
+    float: left;
+    bottom: 3px;
+}
+
+
+
+/* ******************************** mid ******************************* */
+
+.main_nav .mid {
+    width: 40%;
+    display: flex;
+    justify-content: space-around;
+    float: left;
+    border-radius: 5px;
+    font-size: 0;
+}
+
+.main_nav .search input {
+    float: left;
+    display: flex;
+    width: 70%;
+}
+
+.select-box {
+    float: left;
+    width: 30%;
+    position: relative;
+}
+
+.main_nav .select-box {
+    float: left;
+    width: 30%;
+    position: relative;
+}
+
+.main_nav .mid .search {
+    position: relative;
+}
+
+.main_nav .search button {
+    background: none;
+    position: absolute;
+    right: 0%;
+    top: 3%;
+}
+
+.main_nav .search input,
+.main_nav .select-box select,
+.main_nav .store select {
+
+    outline: none;
+}
+
+.main_nav .mid .sr {
+    margin-top: 18px;
+    width: 80%;
+
+}
+
+.main_nav .select-box select {
+    font-weight: 300;
+    color: #ffffff;
+    border: none;
+    background-color: #1757C2;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    font-size: 14px;
+    height: 30px;
+    text-align: center;
+    appearance: none;
+    width: 100%;
+}
+
+.main_nav .select-box:after {
+    content: "";
+    position: absolute;
+    top: 14px;
+    height: 1px;
+    right: 10%;
+    border-top: 5px solid #ffffff;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+}
+
+
+.main_nav .mid input {
+    box-shadow: 0.1px 0.1px 1px 0.1px rgb(119, 120, 121);
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 4px;
+    height: 28px;
+    border: none;
+}
+
+.main_nav .mid button {
+    right: 5%;
+    border: none;
+    top: 26%;
+}
+
+/* *************** right ************************* */
+
+.main_nav .right {
+    width: 25%;
+    float: right;
+}
+
+.main_nav .right ul {
+    margin-top: 15px;
+    width: 95%;
+    float: left;
+    list-style: none;
+    /* padding-right: 20px; */
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+}
+
+.main_nav .right ul li {
+    float: left;
+    width: 33.33%;
+}
+
+.main_nav .right ul li:nth-child(1) {
+    width: 43.33%;
+}
+
+.main_nav .right ul li a {
+    color: black;
+    text-decoration: none;
+}
+
+.main_nav .right ul li .summary {
+    line-height: 34px;
+    font-size: 15px;
+    font-weight: 1000;
+}
+
+.main_nav .right ul li a img {
+    margin-right: 5px;
+}
+
+.main_nav .right button {
+    width: 10%;
+    float: right;
+    margin-top: -40px;
+    border: none;
+    background: none;
+}

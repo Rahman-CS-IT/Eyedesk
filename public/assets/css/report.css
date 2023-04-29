@@ -1,0 +1,146 @@
+.report .report_btn {
+  height: 3.5rem;
+  text-align: left;
+  margin-right: 2rem;
+  padding: 0.8rem 1rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 1.2rem;
+  color: #fff;
+  background-color: #134CAB;
+  cursor: pointer;
+  border: 1px solid rgba(105, 105, 105, 0.5);
+  border-radius: 4px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.report img {
+  margin-left: 5rem;
+  margin-top: -5rem;
+  cursor: pointer;
+  pointer-events: none;
+  width: 28px;
+}
+
+.patient-reports {
+  display: none;
+  visibility: hidden;
+  top: 0;
+  left: 0;
+  position: absolute;
+  z-index: 300;
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(168, 168, 168, 0.5);
+}
+.patient-reports .modal {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  width: 80vw;
+  height: 70rem;
+  background-color: #fff;
+  transform: translate(-50%, -40%);
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.patient-reports .modal .modal__header {
+  padding: 1.3rem 2rem;
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  gap: 45%;
+  align-items: center;
+}
+.patient-reports .modal .modal__header .modal__header__heading {
+  font-size: 1.75rem;
+  font-weight: 600;
+}
+.patient-reports .modal .modal__header .modal-closebtn {
+  cursor: pointer;
+}
+.patient-reports .modal .modal__container {
+  width: 95%;
+  height: 60rem;
+  display: flex;
+  border: 1px solid rgba(105, 105, 105, 0.2);
+  background-color: #f5f5f5;
+}
+.patient-reports .modal .modal__container .modal__container_table {
+  width: 100%;
+}
+.patient-reports .modal .modal__container .modal__container_table thead, .patient-reports .modal .modal__container .modal__container_table tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+.patient-reports .modal .modal__container .modal__container_table tbody {
+  display: block;
+  max-height: 54rem;
+  overflow-y: scroll;
+}
+.patient-reports .modal .modal__container .view-emr-img {
+  height: 2.8rem;
+}
+.patient-reports .modal .modal__container .downlaod-emr-img {
+  height: 3.2rem;
+}
+.patient-reports .modal .modal__container .email-emr-img {
+  height: 2.8rem;
+}
+.patient-reports .modal .modal__container .modal__container_table table {
+  width: 100%;
+}
+.patient-reports .modal .modal__container .modal__container_table th {
+  color: #fff;
+  height: 5rem;
+  font-size: 1.75rem;
+  font-weight: 400;
+  background-color: #134CAB;
+}
+.patient-reports .modal .modal__container .modal__container_table td {
+  font-size: 1.75rem;
+  text-align: center;
+}
+.patient-reports .modal .modal__container .modal__container_table tr td {
+  height: 3.5rem;
+}
+.patient-reports .search-emr {
+  padding: 1.3rem 2rem;
+  display: flex;
+  /* width: 100%; */
+  justify-content: center;
+  gap: 0%;
+  align-items: center;
+  font-size: 1.75rem;
+  font-weight: 600;
+}
+.patient-reports .search-emr input {
+  width: 35rem;
+  height: 2.5rem;
+  border: 1px solid rgba(105, 105, 105, 0.5);
+  border-right: none;
+}
+.patient-reports .search-emr button {
+  height: 2.5rem;
+  font-weight: 400;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border: 1px solid rgba(105, 105, 105, 0.5);
+  background-color: #134CAB;
+  color: #fff;
+  text-align: center;
+  width: 10rem;
+  border-radius: 0 4px 4px 0;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+
+.patient-reports.active {
+  display: block;
+  visibility: visible;
+}/*# sourceMappingURL=report.css.map */
